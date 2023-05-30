@@ -26,6 +26,8 @@ class UserDetails(models.Model):
     bio = models.CharField( max_length=500, null=True, blank=True)
     is_email_verified = models.BooleanField()
     profile_picture=models.ImageField(upload_to='profpictures',null=True)
+    def __str__(self):
+        return "%s" %(self.user)
 
  
 

@@ -13,3 +13,5 @@ class Event(models.Model):
     start_date=models.DateField("startdate(mm/dd/yyyy)",auto_now_add=False,auto_now=False,blank=True)
     end_date=models.DateField("enddate(mm/dd/yyyy)",auto_now_add=False,auto_now=False,blank=True)
 
+    def __str__(self):
+        return "%s" %(self.e_name)
