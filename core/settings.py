@@ -139,7 +139,11 @@ REST_FRAMEWORK = {
         # 'rest_framework.authentication.BasicAuthentication',
         # 'rest_framework.authentication.SessionAuthentication',
         'knox.auth.TokenAuthentication',
-    ]
+        
+    ],
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'Events.custompermissions.isambass',
+    # ]
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

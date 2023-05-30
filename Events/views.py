@@ -4,10 +4,12 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions
 from .serializers import EventSerializer
 from Events.models import Event
-
+from .custompermissions import isambass
 # Create your views here.
 @api_view(['POST'])
+@permission_classes([isambass])
 def createevent(request):
+    # permission_classes=[isambass]
     serializer = EventSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -15,6 +17,8 @@ def createevent(request):
         return Response(res)
     else:
          return Response(serializer.errors, status=400)
+    
+
 @api_view(['GET'])
 def showevent(request,id=None):
     if id is not None :
@@ -25,6 +29,7 @@ def showevent(request,id=None):
     serializer=EventSerializer(eve,many=True)
     return Response(serializer.data)
 @api_view(['PUT'])
+@permission_classes([isambass])
 def updateevent(request,id):
     if id is not None :
             eve=Event.objects.get(e_id=id)
@@ -36,6 +41,7 @@ def updateevent(request,id):
             else:
                 return Response(serializer.errors, status=400)
 @api_view(['DELETE'])
+@permission_classes([isambass])
 def deleteevent(request,id):
     if id is not None :
             boo=Event.objects.get(e_id=id)

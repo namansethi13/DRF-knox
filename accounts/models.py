@@ -22,7 +22,7 @@ class UserDetails(models.Model):
         choices = SEMESTER_CHOICES,
         default = '1'
         )
-    is_college_amabassador = models.BooleanField() 
+    is_college_amabassador = models.BooleanField(default=False) 
     bio = models.CharField( max_length=500, null=True, blank=True)
     is_email_verified = models.BooleanField()
     profile_picture=models.ImageField(upload_to='profpictures',null=True)
