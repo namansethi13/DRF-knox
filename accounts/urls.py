@@ -1,6 +1,7 @@
 from knox import views as knox_views
 from .views import RegisterAPI ,ChangePasswordView
 from django.urls import path
+
 from .views import LoginAPI , RegisterAPI , getuser
 from .verifymail import verify_mail
 urlpatterns = [

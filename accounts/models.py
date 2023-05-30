@@ -27,5 +27,4 @@ class UserDetails(models.Model):
     is_email_verified = models.BooleanField()
  
 
-
     

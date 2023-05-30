@@ -11,4 +11,3 @@ class Events(models.Model):
     Location=models.TextField()
     start_date=models.DateField("startdate(mm/dd/yyyy)",auto_now_add=False,auto_now=False,blank=True)
     end_date=models.DateField("enddate(mm/dd/yyyy)",auto_now_add=False,auto_now=False,blank=True)
-    
