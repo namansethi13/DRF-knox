@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions
 from .serializers import EventSerializer
-from Events.models import Events
+from Events.models import Event
 
 # Create your views here.
 @api_view(['POST'])
@@ -18,16 +18,16 @@ def createevent(request):
 @api_view(['GET'])
 def showevent(request,id=None):
     if id is not None :
-        eve=Events.objects.get(id=id)
-        serializer=EventSerializer(eve) 
+        eve=Event.objects.get(id=id)
+        serializer=EventSerializer(eve)
         return Response(serializer.data)
-    eve=Events.objects.all()
+    eve=Event.objects.all()
     serializer=EventSerializer(eve,many=True)
     return Response(serializer.data)
 @api_view(['PUT'])
 def updateevent(request,id):
     if id is not None :
-            eve=Events.objects.get(e_id=id)
+            eve=Event.objects.get(e_id=id)
             serializer=EventSerializer(eve,data=request.data,partial=True)#model data to python data 
             if serializer.is_valid():
                 serializer.save()
@@ -38,7 +38,7 @@ def updateevent(request,id):
 @api_view(['DELETE'])
 def deleteevent(request,id):
     if id is not None :
-            boo=Events.objects.get(e_id=id)
+            boo=Event.objects.get(e_id=id)
             boo.delete()
             res = {'msg': 'deleted succesfully'}
             return Response(res)

@@ -25,6 +25,8 @@ class UserDetails(models.Model):
     is_college_amabassador = models.BooleanField() 
     bio = models.CharField( max_length=500, null=True, blank=True)
     is_email_verified = models.BooleanField()
+    profile_picture=models.ImageField(upload_to='profpictures',null=True)
+
  
 
     

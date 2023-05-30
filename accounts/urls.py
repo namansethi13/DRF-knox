@@ -1,6 +1,9 @@
 from knox import views as knox_views
 from .views import RegisterAPI ,ChangePasswordView
 from django.urls import path
+from django.conf import settings
+from Events import views
+from django.conf.urls.static import static
 
 from .views import LoginAPI , RegisterAPI , getuser
 from .verifymail import verify_mail
@@ -14,3 +17,4 @@ urlpatterns = [
     path('verify_token/<slug:verify_token>',verify_mail)
 
 ]
+urlpatterns=urlpatterns+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
